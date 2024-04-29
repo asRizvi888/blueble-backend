@@ -11,7 +11,7 @@ const signup = async (req, res) => {
   try {
     const { email, password } = req.body; // Validate request
     if (!email || !password) {
-      return res.status(400).json({
+      return res.status(200).json({
         success: false,
         message: "Username and password are required",
       });
@@ -20,7 +20,7 @@ const signup = async (req, res) => {
     // Check if email already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({
+      return res.status(200).json({
         success: false,
         message: "User with same email exists",
       });
@@ -30,7 +30,7 @@ const signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({ email: email, password: hashedPassword });
     await newUser.save();
-    res.status(201).json({
+    res.status(200).json({
       success: true,
       message: "User created successfully",
     });
@@ -52,7 +52,7 @@ const login = async (req, res) => {
     // Find user
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).json({
+      return res.status(200).json({
         success: false,
         message: "Invalid email or password",
       });
@@ -61,7 +61,7 @@ const login = async (req, res) => {
     // Check password
     const isPasswordValid = bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.status(401).json({
+      return res.status(200).json({
         success: false,
         message: "Invalid email or password",
       });
