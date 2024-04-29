@@ -6,15 +6,16 @@ npm i
 ```
 
 ## Run developement server
-
 ```
 nodemon .
 ```
 
 ## Base URL 
+
 ```
 http://localhost:8080
 ```
+
 
 ## Authentication API Documentation
 
@@ -50,4 +51,3 @@ availability slots based on user.
 - Proper authentication and authorization mechanisms should be implemented to
   secure these endpoints in a production environment.
 
----
