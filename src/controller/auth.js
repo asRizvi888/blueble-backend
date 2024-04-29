@@ -1,7 +1,10 @@
+require("dotenv").config();
+
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const { User } = require("../db/schema");
 
-const JWT_SECRET = "BLUEBLE_SECRET";
+const { JWT_SECRET } = process.env;
 
 // signup
 const signup = async (req, res) => {
@@ -9,6 +12,7 @@ const signup = async (req, res) => {
     const { email, password } = req.body; // Validate request
     if (!email || !password) {
       return res.status(400).json({
+        success: false,
         message: "Username and password are required",
       });
     }
@@ -72,7 +76,7 @@ const login = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
 

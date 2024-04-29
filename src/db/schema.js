@@ -5,6 +5,14 @@ const userSchema = new mongoose.Schema({
   password: String,
 });
 
-const User = mongoose.model("User", userSchema);
+const availabilitySchema = new mongoose.Schema({
+  startTime: Date,
+  endTime: Date,
+  dayOfWeek: String,
+  createdBy: String,
+});
 
-module.exports = { User };
+const User = mongoose.model("User", userSchema);
+const Availability = mongoose.model("Availability", availabilitySchema);
+
+module.exports = { User, Availability };

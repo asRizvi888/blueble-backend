@@ -5,9 +5,10 @@ const cors = require("cors");
 const connectDB = require("./src/db");
 
 const auth = require("./src/service/auth");
+const availability = require("./src/service/availability");
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT;
 
 // connect to DB
 connectDB();
@@ -28,6 +29,7 @@ app.get("/", (_, res) => {
 });
 
 app.use("/api/auth", auth);
+app.use("/api/availability", availability);
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
