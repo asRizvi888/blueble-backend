@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.get("/get", requireSignin, getAvailability);
 router.post("/add", requireSignin, addAvailablity);
-router.put("/edit:id", requireSignin, editAvailability);
-router.delete("/delete:id", requireSignin, deleteAvailability);
+router.put("/edit/:id", requireSignin, editAvailability);
+router.delete("/delete/:id", requireSignin, deleteAvailability);
 
 module.exports = router;
