@@ -82,7 +82,7 @@ const login = async (req, res) => {
 
 // logout
 const logout = async (req, res) => {
-  res.status(200).json({ message: "successfully logged out" });
+  res.status(200).json({ success: true, message: "successfully logged out" });
 };
 
 module.exports = { signup, login, logout };
