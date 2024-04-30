@@ -6,8 +6,8 @@ const userSchema = new mongoose.Schema({
 });
 
 const availabilitySchema = new mongoose.Schema({
-  startTime: Date,
-  endTime: Date,
+  startTime: String,
+  endTime: String,
   dayOfWeek: String,
   createdBy: String,
 });
